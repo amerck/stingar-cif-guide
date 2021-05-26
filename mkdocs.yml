@@ -1,0 +1,8 @@
+site_name: CIF Feed Guide
+site_url: https://stingar-cif-guide.readthedocs.io
+theme: readthedocs
+docs_dir: docs
+markdown_extensions:
+- markdown.extensions.admonition
+pages:
+    - "CIF": index.md
