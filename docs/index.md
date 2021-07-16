@@ -1,6 +1,32 @@
 # Pulling data from CIF
-##Installing the CIF client
-One of the easiest ways to pull data from a CIF instance for feeds is to use the [chn-intel-feeds](chnintelfeed.md
+
+## Using curl
+
+The easiest method for pulling data from CIF is to use curl to query the API directly.
+
+Most recent indicators:
+
+```commandline
+curl -H "Authorization: Token token=abcd" https://public-cif-stingar.security.duke.edu/indicators
+```
+
+Query for specific indicator:
+
+```commandline
+curl -H "Authorization: Token token=abcd" https://public-cif-stingar.security.duke.edu/indicators?indicator=1.2.3.4
+```
+
+All indicators after a particular date (timestamps are in the UTC format "YYYY-MM-DDTHH:MM:SSZ"):
+
+```commandline
+curl -H "Authorization: Token token=abcd" https://public-cif-stingar.security.duke.edu/indicators?reporttime=2021-07-16T00:00:00Z
+```
+
+
+## Using CIF SDK
+
+### Installing the CIF client
+Another method for pulling data from a CIF instance for feeds is to use the [chn-intel-feeds](chnintelfeed.md
 ) container. As an alternative for more flexible feed generation and ad-hoc querying, it's best to use the [CIF client](https://github.com/csirtgadgets/bearded-avenger-sdk-py/wiki) from the
  CIF project. Installing a CIFv3 client is as easy as `python3 -m pip install 'cifsdk>=3.0.0,<4.0'`. Once the client is installed, you should save your credentials 
  in a configuration file, where the format is:
@@ -17,7 +43,7 @@ properly validated certificate installed on your CIF instance, set this value
  to 'false'; if your CIF instance uses a self-signed certificate, use 'true' 
  here.
  
-## Selecting and formatting data
+### Selecting and formatting data
  Once you have the CIF client installed, you can use the client to [select 
  and pull data from the CIF instance in a variety of formats](https://github.com/csirtgadgets/bearded-avenger-deploymentkit/wiki/Where-do-I-start-Feeds).
  
